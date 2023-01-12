@@ -17,11 +17,6 @@ class MenuItemView(viewsets.ModelViewSet):
     serializer_class = MenuSerializer
 
 @permission_classes([IsAuthenticated])
-class SingleItemView(viewsets.ModelViewSet):
-    queryset = menu.objects.all()
-    serializer_class = MenuSerializer
-
-@permission_classes([IsAuthenticated])
 class BookingViewSet(viewsets.ModelViewSet):
     queryset = booking.objects.all()
     serializer_class = BookingSerializer
