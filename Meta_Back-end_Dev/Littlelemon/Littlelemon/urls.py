@@ -18,8 +18,12 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter 
 from restaurant import views
 
-router = DefaultRouter()
-router.register(r'tables', views.BookingViewSet)
+# Adding Routers for DRF viewset (Auto establish Get, Post, Update and Delete operations).
+tablesRouter = DefaultRouter()
+menuRouter = DefaultRouter()
+
+tablesRouter.register(r'tables', views.BookingViewSet)
+menuRouter.register(r'menu', views.MenuItemView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +31,7 @@ urlpatterns = [
     path('auth/', include('djoser.urls.authtoken')),
     path('', include('restaurant.urls')),
     path('api/',include('restaurant.urls')),
-    path('api/booking/',include(router.urls))
+    path('api/booking/',include(tablesRouter.urls)),
+    path('api/',include(menuRouter.urls))
 ]
 

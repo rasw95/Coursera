@@ -12,12 +12,12 @@ def index (request):
     return render(request, 'index.html', {})
 
 @permission_classes([IsAuthenticated])
-class MenuItemView(generics.ListCreateAPIView):
+class MenuItemView(viewsets.ModelViewSet):
     queryset = menu.objects.all()
     serializer_class = MenuSerializer
 
 @permission_classes([IsAuthenticated])
-class SingleItemView(generics.RetrieveUpdateDestroyAPIView):
+class SingleItemView(viewsets.ModelViewSet):
     queryset = menu.objects.all()
     serializer_class = MenuSerializer
 
@@ -25,4 +25,3 @@ class SingleItemView(generics.RetrieveUpdateDestroyAPIView):
 class BookingViewSet(viewsets.ModelViewSet):
     queryset = booking.objects.all()
     serializer_class = BookingSerializer
-
