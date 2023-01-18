@@ -1,8 +1,9 @@
+# >>>>>>> to run the test: python3 manage.py test tests/
+
 from django.test import TestCase
-from restaurant.models import MenuItem
+from restaurant.models import *
 
-
-class MenuItemTest(TestCase):
+class MenuTest(TestCase):
     def test_get_item(self):
-        item = MenuItem.objects.create(title="IceCream", price=80, inventory=100)
-        self.assertEqual(str(item), "IceCream : 80")
+        item = menu.objects.create(Title='Grilled Fish', Price=13.00, Inventory=25)
+        self.assertEqual(item.__str__(), 'Grilled Fish : 13.0')
