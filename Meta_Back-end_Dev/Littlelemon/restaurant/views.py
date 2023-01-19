@@ -14,14 +14,14 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-#def book(request):   # Using FormModel method.
+def book(request):   # Using FormModel method.
     #form = BookingForm()
     #if request.method == 'POST':
        # form = BookingForm(request.POST)
         #if form.is_valid():
             #form.save()
     #context = {'form':form}
-    #return render(request, 'book.html', {})
+    return render(request, 'book.html', {})
 
 # Add your code here to create new views
 def menu(request):

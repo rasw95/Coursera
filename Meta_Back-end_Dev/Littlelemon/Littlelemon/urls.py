@@ -30,6 +30,7 @@ urlpatterns = [
     path('auth/',include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
     path('', include('restaurant.urls')),
+    path('api/', include('APIs.urls')),
     #path('api/',include('restaurant.urls')),
     #path('api/booking/',include(tablesRouter.urls)),
     #path('api/',include(menuRouter.urls))
