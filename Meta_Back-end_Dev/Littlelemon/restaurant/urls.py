@@ -1,8 +1,14 @@
 from django.urls import path
-from .views import *
-from rest_framework.authtoken.views import obtain_auth_token
+from . import views
+
 
 urlpatterns = [
-    path('', index, name = "index"),
-    path('api-token-auth', obtain_auth_token)
+    path('', views.home, name="home"),
+    path('about/', views.about, name="about"),
+    path('book/', views.book, name="book"),
+    # Add the remaining URL path configurations here
+    path('menu/', views.menu, name = 'menu'),
+    path('menu_item/<int:pk>/', views.display_items, name= 'menu_item'), 
+    path('bookings', views.bookings, name='bookings'), 
+
 ]

@@ -19,19 +19,19 @@ from rest_framework.routers import DefaultRouter
 from restaurant import views
 
 # Adding Routers for DRF viewset (Auto establish Get, Post, Update and Delete operations).
-tablesRouter = DefaultRouter()
-menuRouter = DefaultRouter()
+#tablesRouter = DefaultRouter()
+#menuRouter = DefaultRouter()
 
-tablesRouter.register(r'tables', views.BookingViewSet)
-menuRouter.register(r'menu', views.MenuItemView)
+#tablesRouter.register(r'tables', views.BookingViewSet)
+#menuRouter.register(r'menu', views.MenuItemView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/',include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
     path('', include('restaurant.urls')),
-    path('api/',include('restaurant.urls')),
-    path('api/booking/',include(tablesRouter.urls)),
-    path('api/',include(menuRouter.urls))
+    #path('api/',include('restaurant.urls')),
+    #path('api/booking/',include(tablesRouter.urls)),
+    #path('api/',include(menuRouter.urls))
 ]
 

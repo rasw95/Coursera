@@ -1,19 +1,27 @@
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
+
 
 # Create your models here.
-class booking(models.Model):
-    Name = models.CharField(max_length=255, null=False, blank=False)
-    No_of_guests = models.IntegerField(default=1, validators=[MaxValueValidator(6),MinValueValidator(1)])
-    BookingDate = models.DateTimeField(null=False)
+class Booking(models.Model):
+    first_name = models.CharField(max_length=200, default="NA")
+    reservation_date = models.DateField(default=None)
+    reservation_slot = models.SmallIntegerField(default=10)
+    def __str__(self): 
+        return self.first_name
+
+
+
+class Category(models.Model):
+    slug = models.SlugField()
+    title = models.CharField(max_length=255, db_index= True) #DB index fast searching. 
     def __str__(self) -> str:
-        return f'{self.Name}' 
+        return self.title
 
-class menu(models.Model):
-    Title = models.CharField(max_length=255, null=False, blank=False)
-    Price =models.DecimalField(max_digits=10, decimal_places=2)
-    Inventory = models.SmallIntegerField(default= 0,  validators=[MaxValueValidator(10), MinValueValidator(1)]) 
-    def __str__(self) -> str:
-        return f'{self.Title} : {self.Price}'
-
-
+class MenuItem(models.Model):
+    name = models.CharField(max_length=200, default='NA')
+    price = models.IntegerField()
+    description = models.TextField(max_length=1000, default='No Description')
+    category = models.ForeignKey(Category, on_delete= models.PROTECT)
+    def __str__(self):
+      return self.name
+  
